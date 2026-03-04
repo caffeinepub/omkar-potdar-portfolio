@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Font Faces ────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk[wght].woff2") format("woff2-variations");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Near white / near black palette */
+    --background: 0.98 0 0;
+    --foreground: 0.12 0 0;
+    --card: 0.97 0 0;
+    --card-foreground: 0.12 0 0;
+    --popover: 0.99 0 0;
+    --popover-foreground: 0.12 0 0;
+
+    /* Primary = black */
+    --primary: 0.12 0 0;
+    --primary-foreground: 0.98 0 0;
+
+    /* Secondary = light grey */
+    --secondary: 0.94 0 0;
+    --secondary-foreground: 0.12 0 0;
+
+    /* Muted */
+    --muted: 0.92 0 0;
+    --muted-foreground: 0.45 0 0;
+
+    /* Accent = burnt orange (OKLCH 62% chroma 0.18 hue 40) */
+    --accent: 0.62 0.18 40;
+    --accent-foreground: 0.98 0 0;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Borders / inputs */
+    --border: 0.88 0 0;
+    --input: 0.88 0 0;
+    --ring: 0.62 0.18 40;
+
+    /* Charts */
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 0.97 0 0;
+    --sidebar-foreground: 0.12 0 0;
+    --sidebar-primary: 0.12 0 0;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.94 0 0;
+    --sidebar-accent-foreground: 0.12 0 0;
+    --sidebar-border: 0.88 0 0;
+    --sidebar-ring: 0.62 0.18 40;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01";
+  }
+}
+
+/* ─── Hero Fade-in Animation ────────────────────────────────────────────── */
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+.hero-animate-1 {
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+.hero-animate-2 {
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+.hero-animate-3 {
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+.hero-animate-4 {
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+}
+.hero-scroll-indicator {
+  animation: hero-fade-in 1s 1.2s both, scroll-bounce 2s 2s ease-in-out infinite;
+}
+
+/* ─── Scroll Reveal ─────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition-property: opacity, transform;
+  transition-duration: 0.65s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero-animate-1,
+  .hero-animate-2,
+  .hero-animate-3,
+  .hero-animate-4,
+  .hero-scroll-indicator {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ─── Work Grid Card Hover Overlay ──────────────────────────────────────── */
+
+.project-card .card-overlay {
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .card-overlay {
+  transform: translateY(0);
+}
+
+/* ─── Nav Glass ─────────────────────────────────────────────────────────── */
+
+.nav-glass {
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  background-color: oklch(0.98 0 0 / 0.88);
+  border-bottom: 1px solid oklch(0.88 0 0);
+}
