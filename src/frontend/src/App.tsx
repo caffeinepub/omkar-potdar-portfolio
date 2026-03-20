@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   ChevronDown,
-  Download,
   Instagram,
   Linkedin,
   Mail,
@@ -444,9 +443,6 @@ function AboutSection() {
               I bring perspective shaped by India's storytelling traditions and
               international production experience.
             </p>
-            <p className="font-medium text-foreground">
-              Currently relocating to Germany from India.
-            </p>
           </div>
         </div>
 
@@ -723,15 +719,14 @@ function ContactSection() {
 
         <div
           ref={contentRef as React.RefObject<HTMLDivElement>}
-          className="reveal grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+          className="reveal"
           style={{ transitionDelay: "100ms" }}
         >
           {/* Contact info */}
-          <div className="space-y-8">
-            <p className="font-body text-base leading-relaxed text-muted-foreground max-w-md">
+          <div className="space-y-8 max-w-md">
+            <p className="font-body text-base leading-relaxed text-muted-foreground">
               Open to creative director roles, brand strategy partnerships, and
-              production collaborations. Currently relocating to Germany from
-              India.
+              production collaborations.
             </p>
 
             <div className="space-y-4">
@@ -785,23 +780,6 @@ function ContactSection() {
                 <Instagram size={16} />
               </a>
             </div>
-          </div>
-
-          {/* Download CV */}
-          <div className="flex flex-col items-start gap-6">
-            <p className="font-body text-xs tracking-[0.25em] uppercase text-muted-foreground">
-              Full credentials
-            </p>
-            <a
-              href="https://drive.google.com/uc?export=download&id=1xZqFX0LJeZTjdMbFG9lg0Ews83mmmc7-"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-ocid="contact.primary_button"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-foreground text-primary-foreground font-body font-semibold text-sm tracking-wide hover:bg-accent hover:text-accent-foreground transition-[background-color,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <Download size={16} />
-              Download CV
-            </a>
           </div>
         </div>
       </div>

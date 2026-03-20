@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(0.99 0 0);
+    --foreground: oklch(0.1 0 0);
+    --card: oklch(0.99 0 0);
+    --card-foreground: oklch(0.1 0 0);
+    --popover: oklch(0.99 0 0);
+    --popover-foreground: oklch(0.1 0 0);
+    --primary: oklch(0.1 0 0);
+    --primary-foreground: oklch(0.99 0 0);
+    --secondary: oklch(0.95 0 0);
+    --secondary-foreground: oklch(0.1 0 0);
+    --muted: oklch(0.95 0 0);
+    --muted-foreground: oklch(0.5 0 0);
+    --accent: oklch(0.57 0.18 42);
+    --accent-foreground: oklch(0.99 0 0);
+    --destructive: oklch(0.55 0.22 27);
+    --destructive-foreground: oklch(0.99 0 0);
+    --border: oklch(0.88 0 0);
+    --input: oklch(0.88 0 0);
+    --ring: oklch(0.57 0.18 42);
+    --radius: 0rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
+    font-family: "Space Grotesk", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ─── CSS Custom Properties (Tailwind-compatible) ────────────────────── */
+:root {
+  --background: 0 0% 99%;
+  --foreground: 0 0% 6%;
+  --card: 0 0% 99%;
+  --card-foreground: 0 0% 6%;
+  --popover: 0 0% 99%;
+  --popover-foreground: 0 0% 6%;
+  --primary: 0 0% 6%;
+  --primary-foreground: 0 0% 99%;
+  --secondary: 0 0% 95%;
+  --secondary-foreground: 0 0% 6%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 25 73% 47%;
+  --accent-foreground: 0 0% 99%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
+  --ring: 25 73% 47%;
+  --radius: 0rem;
+}
+
+/* ─── Font definitions ───────────────────────────────────────────────── */
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.font-body {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* ─── Navigation glass ───────────────────────────────────────────────── */
+.nav-glass {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid oklch(0.88 0 0);
+}
+
+/* ─── Scroll reveal ──────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Hero animations ────────────────────────────────────────────────── */
+.hero-animate-1 {
+  animation: heroFadeUp 0.7s ease 0.1s both;
+}
+.hero-animate-2 {
+  animation: heroFadeUp 0.7s ease 0.25s both;
+}
+.hero-animate-3 {
+  animation: heroFadeUp 0.7s ease 0.4s both;
+}
+.hero-animate-4 {
+  animation: heroFadeUp 0.7s ease 0.55s both;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-scroll-indicator {
+  animation: heroFadeUp 0.7s ease 1s both;
+}
+
+/* ─── Project card hover ─────────────────────────────────────────────── */
+.project-card {
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+}
